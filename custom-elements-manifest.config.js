@@ -28,36 +28,36 @@ export default {
     customElementJetBrainsPlugin(),
     customElementReactWrapperPlugin({
       outdir: 'react',
-      modulePath: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      modulePath: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
     customElementSolidJsPlugin({
       outdir: 'types',
       fileName: 'custom-element-solidjs.d.ts',
-      modulePath: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      modulePath: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
     customElementJsxPlugin({
       outdir: 'types',
-      modulePath: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      modulePath: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
     customElementVuejsPlugin({
       outdir: 'types',
       fileName: 'custom-element-vuejs.d.ts',
-      modulePath: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      modulePath: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
     customElementSveltePlugin({
       outdir: 'types',
       fileName: 'custom-element-svelte.d.ts',
-      modulePath: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      modulePath: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
     customElementLazyLoaderPlugin({
       outdir: 'cdn',
-      importPathTemplate: (className, tagName) =>
-        `../dist/components/${tagName}/${className}.js`,
+      importPathTemplate: (_, tagName) =>
+        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
     }),
 
     customJSDocTagsPlugin({
