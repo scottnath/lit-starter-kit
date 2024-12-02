@@ -1,4 +1,5 @@
 import { getTsProgram, expandTypesPlugin } from 'cem-plugin-expanded-types';
+import { customElementReactWrapperPlugin } from 'custom-element-react-wrappers';
 
 export default {
   /** Globs to analyze */
@@ -8,7 +9,14 @@ export default {
   /** Enable special handling for litelement */
   litelement: true,
   /** Provide custom plugins */
-  plugins: [expandTypesPlugin()],
+  plugins: [
+    expandTypesPlugin(),
+    customElementReactWrapperPlugin({
+      outdir: 'react',
+      modulePath: (className, tagName) =>
+        `../dist/components/${tagName}/${className}.js`,
+    }),
+  ],
 
   overrideModuleCreation: ({ ts, globs }) => {
     const program = getTsProgram(ts, globs, 'tsconfig.json');
