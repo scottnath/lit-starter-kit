@@ -132,6 +132,7 @@ dist
 # Custom
 /cdn
 /eslint
+/public
 /react
 /types
 custom-elements.json
