@@ -6,6 +6,11 @@ import { customElementSolidJsPlugin } from "custom-element-solidjs-integration";
 import { customElementJsxPlugin } from "custom-element-jsx-integration";
 import { customElementVuejsPlugin } from "custom-element-vuejs-integration";
 import { customElementSveltePlugin } from "custom-element-svelte-integration";
+import { cemInheritancePlugin } from "custom-elements-manifest-inheritance";
+import { customElementLazyLoaderPlugin } from "custom-element-lazy-loader";
+import { customJSDocTagsPlugin } from "cem-plugin-custom-jsdoc-tags";
+import { customEsLintRuleGeneratorPlugin } from "custom-element-eslint-rule-generator";
+
 
 export default {
   /** Globs to analyze */
@@ -17,6 +22,8 @@ export default {
   /** Provide custom plugins */
   plugins: [
     expandTypesPlugin(),
+    cemInheritancePlugin(),
+
     customElementVsCodePlugin(),
     customElementJetBrainsPlugin(),
     customElementReactWrapperPlugin({
@@ -47,6 +54,26 @@ export default {
       modulePath: (className, tagName) =>
         `../dist/components/${tagName}/${className}.js`,
     }),
+    customElementLazyLoaderPlugin({
+      outdir: 'cdn',
+      importPathTemplate: (className, tagName) =>
+        `../dist/components/${tagName}/${className}.js`,
+    }),
+
+    customJSDocTagsPlugin({
+      tags: {
+        status: {},
+        since: {},
+        dependency: {
+          mappedName: 'dependencies',
+          isArray: true,
+        },
+      }
+    }),
+
+    customEsLintRuleGeneratorPlugin({
+      outdir: 'eslint'
+    })
   ],
 
   overrideModuleCreation: ({ ts, globs }) => {

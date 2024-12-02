@@ -130,9 +130,11 @@ dist
 .pnp.*
 
 # Custom
-custom-elements.json
+/cdn
+/eslint
 /react
 /types
+custom-elements.json
 vscode.css-custom-data.json
 vscode.html-custom-data.json
 web-types.json
