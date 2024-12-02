@@ -1,6 +1,7 @@
 import { getTsProgram, expandTypesPlugin } from 'cem-plugin-expanded-types';
 import { customElementReactWrapperPlugin } from 'custom-element-react-wrappers';
 import { customElementVsCodePlugin } from "custom-element-vs-code-integration";
+import { customElementJetBrainsPlugin } from "custom-element-jet-brains-integration";
 
 export default {
   /** Globs to analyze */
@@ -13,6 +14,7 @@ export default {
   plugins: [
     expandTypesPlugin(),
     customElementVsCodePlugin(),
+    customElementJetBrainsPlugin(),
     customElementReactWrapperPlugin({
       outdir: 'react',
       modulePath: (className, tagName) =>
