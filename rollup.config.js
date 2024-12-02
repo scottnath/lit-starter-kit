@@ -2,7 +2,9 @@ import { globSync } from 'glob';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts'
+import dts from 'rollup-plugin-dts';
+import resolve from '@rollup/plugin-node-resolve';
+import plugin from 'rollup-plugin-dts';
 
 export default [
   /** bundle components for the CDN */
@@ -38,6 +40,7 @@ export default [
         declaration: false,
         declarationMap: false,
       }),
+      resolve(),
     ],
   },
 
@@ -56,6 +59,7 @@ export default [
         declaration: false,
         declarationMap: false,
       }),
+      resolve(),
     ],
   },
 
@@ -67,11 +71,14 @@ export default [
       file: 'public/react/index.js',
       sourcemap: false,
     },
+    external: ['react'],
+    plugins: [resolve()],
   },
   // bundle react component types for sandboxes
   {
     input: './react/index.d.ts',
     output: [{ file: 'public/react/index.d.ts', format: 'es' }],
-    plugins: [dts()],
+    external: ['react'],
+    plugins: [dts(), resolve()],
   },
 ];

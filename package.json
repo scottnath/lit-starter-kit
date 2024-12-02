@@ -9,9 +9,8 @@
     "analyze:dev": "cem analyze --watch",
     "dev": "concurrently -k -r \"npm run analyze:dev\" \"npm run storybook\"",
     "test": "web-test-runner --group default",
-    "build": "npm run analyze && tsc",
+    "build": "npm run analyze && tsc && npm run build:cdn",
     "build:cdn": "rollup -c rollup.config.js",
-    "build:sandbox": "rollup -c rollup.sandbox.config.js",
     "deploy": "npm run build && npm publish",
     "format": "npm run format:eslint && npm run format:prettier",
     "format:eslint": "npx eslint --fix",
@@ -19,7 +18,7 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "npx eslint",
     "lint:prettier": "npx prettier . --check",
-    "prepare": "husky && npx playwright install",
+    "prepare": "husky && npx playwright install-deps",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -31,10 +30,11 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.6.0",
+    "@eslint/js": "^8.57.1",
     "@open-wc/eslint-config": "^12.0.3",
     "@open-wc/testing": "^4.0.0",
     "@playwright/test": "^1.46.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@storybook/addon-a11y": "^8.4.6",
     "@storybook/addon-actions": "^8.1.11",
@@ -63,7 +63,7 @@
     "custom-element-vs-code-integration": "^1.4.1",
     "custom-element-vuejs-integration": "^1.3.3",
     "custom-elements-manifest-inheritance": "^1.1.1",
-    "eslint": "^9.6.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-require-extensions": "^0.1.3",
     "eslint-plugin-storybook": "^0.8.0",
@@ -92,10 +92,16 @@
   },
   "files": [
     "cdn",
+    "eslint",
     "dist",
+    "react",
+    "types",
     "index.d.ts",
     "index.js",
     "package.json",
-    "custom-elements.json"
+    "custom-elements.json",
+    "vscode.css-custom-data.json",
+    "vscode.html-custom-data.json",
+    "web-types.json"
   ]
 }
