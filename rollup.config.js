@@ -5,6 +5,8 @@ import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import resolve from '@rollup/plugin-node-resolve';
 import multi from '@rollup/plugin-multi-entry';
+import terser from '@rollup/plugin-terser';
+import summary from 'rollup-plugin-summary';
 
 export default [
   /** bundle components for the CDN */
@@ -41,6 +43,12 @@ export default [
         declarationMap: false,
       }),
       resolve(),
+      terser({
+        ecma: 2021,
+        module: true,
+        warnings: true,
+      }),
+      summary(),
     ],
   },
 
@@ -60,7 +68,15 @@ export default [
         declarationMap: false,
       }),
       resolve(),
-      multi(),
+      multi({
+        entryFileName: 'index.js',
+      }),
+      terser({
+        ecma: 2021,
+        module: true,
+        warnings: true,
+      }),
+      summary(),
     ],
   },
 
@@ -73,13 +89,21 @@ export default [
       sourcemap: false,
     },
     external: ['react'],
-    plugins: [resolve()],
+    plugins: [
+      resolve(),
+      terser({
+        ecma: 2021,
+        module: true,
+        warnings: true,
+      }),
+      summary(),
+    ],
   },
   // bundle react component types for sandboxes
   {
     input: './react/index.d.ts',
     output: [{ file: 'public/react/index.d.ts', format: 'es' }],
     external: ['react'],
-    plugins: [dts(), resolve()],
+    plugins: [dts(), resolve(), summary(),],
   },
 ];
