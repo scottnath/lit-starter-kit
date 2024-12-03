@@ -70,7 +70,7 @@ export default function (plop) {
           type: 'add',
           skipIfExists: true,
           path: `${BASE_PATH}/index.ts`,
-          templateFile: 'plop-templates/fui/component.definition.ts.hbs',
+          templateFile: 'plop-templates/component.definition.ts.hbs',
         },
       ];
     },
