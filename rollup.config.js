@@ -7,6 +7,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import multi from '@rollup/plugin-multi-entry';
 import terser from '@rollup/plugin-terser';
 import summary from 'rollup-plugin-summary';
+import { on } from 'node:events';
 
 export default [
   /** bundle components for the CDN */
@@ -98,12 +99,22 @@ export default [
       }),
       summary(),
     ],
+    onwarn(warning) {
+      if (
+        /Could not resolve import/.test(warning.message) ||
+        /'this' keyword is equivalent to 'undefined'/.test(warning.message)
+      ) {
+        return;
+      }
+
+      console.error(warning.message);
+    },
   },
   // bundle react component types for sandboxes
   {
     input: './react/index.d.ts',
     output: [{ file: 'public/react/index.d.ts', format: 'es' }],
     external: ['react'],
-    plugins: [dts(), resolve(), summary(),],
+    plugins: [dts(), resolve(), summary()],
   },
 ];
