@@ -3,7 +3,9 @@ import packageJson from '../package.json';
 
 (async () => {
   async function fetchLibData(url) {
-    const baseUrl = window.location.href.includes('localhost') ? '' : window.location.href.split('/iframe')[0];
+    const baseUrl = window.location.href.includes('localhost')
+      ? ''
+      : window.location.href.split('/iframe')[0];
 
     try {
       const response = await fetch(baseUrl + url); // Make the request
@@ -34,7 +36,8 @@ import packageJson from '../package.json';
             title: packageJson.name + ' Demo',
             description: 'A live web component demo',
             files: {
-              [`libs/${packageJson.name}/index.js`]: await fetchLibData('/html/index.js'),
+              [`libs/${packageJson.name}/index.js`]:
+                await fetchLibData('/html/index.js'),
             },
           },
           exampleTemplate: {
@@ -61,11 +64,12 @@ import packageJson from '../package.json';
             title: packageJson.name + ' React Demo',
             description: 'A live react/web component demo',
             files: {
-              [`libs/${packageJson.name}/react/index.js`]: await fetchLibData('/react/index.js'),
-              [`libs/${packageJson.name}/react/index.d.ts`]: await fetchLibData('/react/index.d.ts'),
+              [`libs/${packageJson.name}/react/index.js`]:
+                await fetchLibData('/react/index.js'),
+              [`libs/${packageJson.name}/react/index.d.ts`]:
+                await fetchLibData('/react/index.d.ts'),
               'src/index.tsx': `import { createRoot } from "react-dom/client";
 import App from "./App";
-import './styles.css';
 
 const rootElement = createRoot(document.getElementById("root"));
 rootElement.render(<App />);`,
@@ -103,6 +107,36 @@ rootElement.render(<App />);`,
     "vite": "^5.3.2"
   }
 }`,
+              'tsconfig.json': `{
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "strict": false,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "baseUrl": "."
+  }
+}`,
+              'vite.config.ts': `import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+});`,
+              'index.html': `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React code example</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>`,
             },
           },
           exampleTemplate: {
