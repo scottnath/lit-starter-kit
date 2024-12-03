@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import resolve from '@rollup/plugin-node-resolve';
+import multi from '@rollup/plugin-multi-entry';
 
 export default [
   /** bundle components for the CDN */
@@ -48,17 +49,18 @@ export default [
     input: globSync('src/**/index.ts'),
     output: {
       format: 'esm',
-      file: 'public/html/index.js',
+      dir: 'public/html',
     },
     plugins: [
       typescript({
         tsconfig: 'tsconfig.json',
-        outDir: 'public',
+        outDir: 'public/html',
         sourceMap: false,
         declaration: false,
         declarationMap: false,
       }),
       resolve(),
+      multi(),
     ],
   },
 
