@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import resolve from '@rollup/plugin-node-resolve';
-import plugin from 'rollup-plugin-dts';
 
 export default [
   /** bundle components for the CDN */

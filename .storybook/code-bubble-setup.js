@@ -61,15 +61,15 @@ import packageJson from '../package.json';
             title: packageJson.name + ' React Demo',
             description: 'A live react/web component demo',
             files: {
-              'libs/${packageJson.name}/react/index.js': await fetchLibData('/react/index.js'),
-              'libs/${packageJson.name}/react/index.d.ts': await fetchLibData('/react/index.d.ts'),
+              [`libs/${packageJson.name}/react/index.js`]: await fetchLibData('/react/index.js'),
+              [`libs/${packageJson.name}/react/index.d.ts`]: await fetchLibData('/react/index.d.ts'),
               'src/index.tsx': `import { createRoot } from "react-dom/client";
 import App from "./App";
 import './styles.css';
 
 const rootElement = createRoot(document.getElementById("root"));
 rootElement.render(<App />);`,
-              'libs/${packageJson.name}/package.json': `{
+              [`libs/${packageJson.name}/package.json`]: `{
   "name": "${packageJson.name}",
   "version": "${packageJson.version}",
   "description": "A live react/web component demo",
