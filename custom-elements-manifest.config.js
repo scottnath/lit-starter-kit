@@ -29,7 +29,7 @@ export default {
     customElementReactWrapperPlugin({
       outdir: 'react',
       modulePath: (_, tagName) =>
-        `../dist/components/${tagName.replace('my-', '')}/${tagName.replace('my-', '')}.js`,
+        `../dist/components/${tagName.replace('my-', '')}/index.js`,
     }),
     customElementSolidJsPlugin({
       outdir: 'types',
