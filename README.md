@@ -33,3 +33,16 @@ Generating the final build assets will generate the `dist` assets for the NPM pa
 ```bash
 npm run build
 ```
+
+## Testing You Components
+
+Tests are written and executed using [web-test-runner](https://modern-web.dev/docs/test-runner/overview/) which execute your tests in _real_ browsers to validate your APIs are working as expected in the environments you intend to be using them in.
+
+Tests can be configured in the `web-test-runner.config.js` file located at the root of the project.
+
+Tests can be run using the following command:
+
+```bash
+npm test
+```
+

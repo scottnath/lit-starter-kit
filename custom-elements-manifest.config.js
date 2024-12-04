@@ -10,6 +10,7 @@ import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
 import { customElementLazyLoaderPlugin } from 'custom-element-lazy-loader';
 import { customJSDocTagsPlugin } from 'cem-plugin-custom-jsdoc-tags';
 import { customEsLintRuleGeneratorPlugin } from 'custom-element-eslint-rule-generator';
+import { cemDeprecatorPlugin } from "custom-elements-manifest-deprecator";
 
 export default {
   /** Globs to analyze */
@@ -22,6 +23,7 @@ export default {
   plugins: [
     expandTypesPlugin(),
     cemInheritancePlugin(),
+    cemDeprecatorPlugin(),
 
     customElementVsCodePlugin(),
     customElementJetBrainsPlugin(),
