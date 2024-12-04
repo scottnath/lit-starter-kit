@@ -1,35 +1,43 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import { configs } from 'eslint-plugin-lit';
+import { configs as lit } from 'eslint-plugin-lit';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import json from '@eslint/json';
+import markdown from '@eslint/markdown';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {
-    plugins: {
-      json,
-    },
-  },
+  { languageOptions: { globals: globals.browser } },
+  eslintConfigPrettier,
+
   // lint JSON files
   {
     files: ['**/*.json'],
     language: 'json/json',
+    ...json.configs.recommended,
     rules: {
       'json/no-duplicate-keys': 'error',
+      'no-irregular-whitespace': 'off',
     },
   },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
+
+  // lint MD files
+  ...markdown.configs.recommended,
+  {
+    files: ['**/*.md'],
+    rules: {
+      'no-irregular-whitespace': 'off',
+    },
+  },
+
+  // lint JS/TS files
   ...tseslint.configs.recommended,
-  eslintConfigPrettier,
   {
     files: ['**/*.{js,mjs,cjs,ts}'],
-    ...configs['flat/recommended'],
-    rules: {
-      'no-unused-vars': 'error',
-    },
+    ...lit['flat/recommended'],
+    ...js.configs.recommended,
+    rules: {},
   },
 
   {
@@ -45,11 +53,7 @@ export default [
       'vscode.css-custom-data.json',
       'vscode.html-custom-data.json',
       'web-types.json',
-      'package-lock.json',
-      'package.json',
       'tsconfig.json',
-      'README.md',
-
     ],
   },
 ];
