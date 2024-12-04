@@ -7,7 +7,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import multi from '@rollup/plugin-multi-entry';
 import terser from '@rollup/plugin-terser';
 import summary from 'rollup-plugin-summary';
-import { on } from 'node:events';
 
 export default [
   /** bundle components for the CDN */
