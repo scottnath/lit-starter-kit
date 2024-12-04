@@ -15,7 +15,7 @@ const preview: Preview = {
   parameters: {
     controls: {
       expanded: true, // provides descriptions and additional info for controls
-      sort: 'alpha',  // sorts controls in alphabetical order
+      sort: 'alpha', // sorts controls in alphabetical order
     },
   },
   decorators: [withActions],

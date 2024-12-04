@@ -1,16 +1,15 @@
 import { getTsProgram, expandTypesPlugin } from 'cem-plugin-expanded-types';
 import { customElementReactWrapperPlugin } from 'custom-element-react-wrappers';
-import { customElementVsCodePlugin } from "custom-element-vs-code-integration";
-import { customElementJetBrainsPlugin } from "custom-element-jet-brains-integration";
-import { customElementSolidJsPlugin } from "custom-element-solidjs-integration";
-import { customElementJsxPlugin } from "custom-element-jsx-integration";
-import { customElementVuejsPlugin } from "custom-element-vuejs-integration";
-import { customElementSveltePlugin } from "custom-element-svelte-integration";
-import { cemInheritancePlugin } from "custom-elements-manifest-inheritance";
-import { customElementLazyLoaderPlugin } from "custom-element-lazy-loader";
-import { customJSDocTagsPlugin } from "cem-plugin-custom-jsdoc-tags";
-import { customEsLintRuleGeneratorPlugin } from "custom-element-eslint-rule-generator";
-
+import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
+import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
+import { customElementSolidJsPlugin } from 'custom-element-solidjs-integration';
+import { customElementJsxPlugin } from 'custom-element-jsx-integration';
+import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
+import { customElementSveltePlugin } from 'custom-element-svelte-integration';
+import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
+import { customElementLazyLoaderPlugin } from 'custom-element-lazy-loader';
+import { customJSDocTagsPlugin } from 'cem-plugin-custom-jsdoc-tags';
+import { customEsLintRuleGeneratorPlugin } from 'custom-element-eslint-rule-generator';
 
 export default {
   /** Globs to analyze */
@@ -68,12 +67,12 @@ export default {
           mappedName: 'dependencies',
           isArray: true,
         },
-      }
+      },
     }),
 
     customEsLintRuleGeneratorPlugin({
-      outdir: 'eslint'
-    })
+      outdir: 'eslint',
+    }),
   ],
 
   overrideModuleCreation: ({ ts, globs }) => {

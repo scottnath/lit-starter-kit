@@ -5,11 +5,13 @@ import { configs as lit } from 'eslint-plugin-lit';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
+import storybook from 'eslint-plugin-storybook';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   { languageOptions: { globals: globals.browser } },
   eslintConfigPrettier,
+  ...storybook.configs['flat/recommended'],
 
   // lint JSON files
   {
@@ -46,6 +48,7 @@ export default [
       'cdn/*',
       'dist/*',
       'eslint/*',
+      'plop-templates/*',
       'public/*',
       'react/*',
       'types/*',

@@ -91,11 +91,6 @@
     "*.js": "eslint --cache --fix",
     "*.format:prettier": "prettier --write"
   },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
-  },
   "files": [
     "cdn",
     "eslint",
@@ -109,5 +104,12 @@
     "vscode.css-custom-data.json",
     "vscode.html-custom-data.json",
     "web-types.json"
+  ],
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "lit-element",
+    "typescript",
+    "lit"
   ]
 }

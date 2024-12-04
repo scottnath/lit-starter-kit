@@ -4,8 +4,7 @@ import { html } from 'lit';
 
 import type { MyButton } from './button.js';
 
-const { events, args, argTypes, template } =
-  getWcStorybookHelpers('my-button');
+const { events, args, argTypes, template } = getWcStorybookHelpers('my-button');
 
 const meta: Meta<MyButton> = {
   title: 'Components/Button',

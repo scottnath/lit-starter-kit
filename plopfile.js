@@ -1,6 +1,5 @@
 /** @arg {import('plop').NodePlopAPI} plop */
 
-
 export default function (plop) {
   plop.setHelper('dashToTitle', text => {
     const titleCase = plop.getHelper('titleCase');
@@ -13,7 +12,8 @@ export default function (plop) {
       {
         type: 'input',
         name: 'name',
-        message: 'Please enter your component name in kebab-case (e.g. button-group)',
+        message:
+          'Please enter your component name in kebab-case (e.g. button-group)',
         default: '',
       },
     ],
@@ -28,7 +28,7 @@ export default function (plop) {
         basename.endsWith('-')
       ) {
         console.log(
-          'The name must only contain alphanumeric characters and dashes, start with a letter, and not end in a dash. Please try again.'
+          'The name must only contain alphanumeric characters and dashes, start with a letter, and not end in a dash. Please try again.',
         );
         return [];
       }

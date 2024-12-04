@@ -1,11 +1,11 @@
-import { css } from "lit";
+import { css } from 'lit';
 
 export default css`
-:host {
-  display: inline-flex;
-}
+  :host {
+    display: inline-flex;
+  }
 
-button {
-  cursor: pointer;
-}
+  button {
+    cursor: pointer;
+  }
 `;
