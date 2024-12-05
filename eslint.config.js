@@ -6,6 +6,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import json from '@eslint/json';
 import markdown from '@eslint/markdown';
 import storybook from 'eslint-plugin-storybook';
+import litA11y from 'eslint-plugin-lit-a11y';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -40,6 +41,12 @@ export default [
     ...lit['flat/recommended'],
     ...js.configs.recommended,
     rules: {},
+  },
+
+  {
+    plugins: {
+      'lit-a11y': litA11y,
+    },
   },
 
   {
