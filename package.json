@@ -20,7 +20,7 @@
     "lint": "npm run lint:eslint && npm run lint:prettier",
     "lint:eslint": "npx eslint",
     "lint:prettier": "npx prettier . --check",
-    "prepare": "husky && npx playwright install-deps && husky install",
+    "prepare": "husky && npx playwright install-deps",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
