@@ -14,6 +14,13 @@ export default function (plop) {
         name: 'name',
         message:
           'Please enter your component name in kebab-case (e.g. button-group)',
+        default: 'component',
+      },
+      {
+        type: 'input',
+        name: 'prefix',
+        message:
+          'What is the prefix for your component? (e.g. my)',
         default: '',
       },
     ],
@@ -34,6 +41,8 @@ export default function (plop) {
       }
 
       const BASE_PATH = `src/components/{{kebabCase name}}`;
+
+      data.tagName = data?.prefix ? `${data.prefix}-${data.name}` : data.name;
 
       return [
         {

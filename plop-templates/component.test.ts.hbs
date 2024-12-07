@@ -1,10 +1,10 @@
 import './index.js';
 import { expect, fixture, html } from '@open-wc/testing';
 
-describe('My{{pascalCase name}}', () => {
+describe('{{pascalCase tagName}}', () => {
   describe('accessibility', () => {
     it('default is accessible', async () => {
-      const el = await fixture<My{{pascalCase name}}>(html`<my-{{kebabCase name}}></my-{{kebabCase name}}>`);
+      const el = await fixture<{{pascalCase tagName}}>(html`<{{kebabCase tagName}}></{{kebabCase tagName}}>`);
       await expect(el).to.be.accessible();
     });
   });

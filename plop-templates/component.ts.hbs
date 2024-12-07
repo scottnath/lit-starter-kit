@@ -5,12 +5,12 @@ import styles from './{{kebabCase name}}.styles.js';
 /**
  * Add a description here
  *
- * @tag my-{{kebabCase name}}
+ * @tag {{kebabCase tagName}}
  * @since 0.0.0
  * @status experimental
  *
  **/
-export class My{{pascalCase name}} extends LitElement {
+export class {{pascalCase tagName}} extends LitElement {
   static override styles = styles;
 
   @property() 
@@ -23,4 +23,4 @@ export class My{{pascalCase name}} extends LitElement {
   }
 }
 
-export default My{{pascalCase name}};
+export default {{pascalCase tagName}};
