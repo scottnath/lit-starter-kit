@@ -16,6 +16,7 @@ const meta: Meta<MyButton> = {
       handles: events,
     },
   },
+  render: args => html`${template(args)}`,
 };
 export default meta;
 
@@ -26,8 +27,21 @@ export default meta;
 type Story = StoryObj<MyButton & typeof args>;
 
 export const Default: Story = {
-  render: args => html`${template(args)}`,
   args: {
     'default-slot': 'My Button',
+  },
+};
+
+export const AttrVsProp: Story = {
+  args: {
+    'default-slot': 'My Button',
+    variation: 'primary'
+  },
+};
+
+export const PropVsAttr: Story = {
+  args: {
+    'default-slot': 'My Button',
+    'data-variation': 'primary'
   },
 };

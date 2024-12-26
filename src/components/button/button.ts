@@ -20,7 +20,7 @@ export default class MyButton extends LitElement {
   static override styles = styles;
 
   /** Changes the display of the button */
-  @property()
+  @property({ type: String, attribute: 'data-variation' })
   variation?: 'default' | 'primary' | 'hollow' | 'transparent';
 
   /** Controls the disabled property of the button */

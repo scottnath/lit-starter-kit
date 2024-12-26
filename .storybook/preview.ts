@@ -19,6 +19,7 @@ const preview: Preview = {
     },
   },
   decorators: [withActions],
+  tags: ['autodocs'],
 };
 
 export default preview;
