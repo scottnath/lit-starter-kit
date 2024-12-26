@@ -30,6 +30,7 @@ export default class MyButton extends LitElement {
   override render() {
     return html`
       <button part="control" ?disabled=${this.disabled}>
+        variation: ${this.variation}
         <slot></slot>
       </button>
     `;
